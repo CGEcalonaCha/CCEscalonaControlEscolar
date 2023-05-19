@@ -1,0 +1,65 @@
+﻿@model ML.Materia
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <section>
+
+        <h1 class="text-center">Lista de Materias</h1>
+        <p>
+            En este modulo puedes visualizar a las materias existentes, agregar, modificar y eliminar una materia
+        </p>
+    </section>
+
+    <section>
+
+        <div style="float:right;">
+            <div class="row">
+                @Html.ActionLink("Agregar", "Form", "Materia", htmlAttributes: new { @class = "btn btn-success bi bi-person-plus-fill" })
+            </div>
+        </div>
+
+        <hr />
+        <section>
+            @if (Model.Materias == null)
+            {
+                <div class="row">
+                    <div class="alert alert-danger" role="alert">
+                        @ViewBag.Message
+                    </div>
+                </div>
+            }
+            else
+            {
+                <table class="table table-hover table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <td class="text-center" style=" font-weight:bold;">Editar</td>
+                            <td class="visually-hidden">IdMateria</td>
+                            <td class="text-center" style="font-weight:bold;">Nombre</td>
+                            <td class="text-center" style="font-weight:bold;">Costo</td>
+                            <td class="text-center" style=" font-weight:bold;">Eliminar</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (ML.Materia materia in Model.Materias)
+                        {
+                            <tr>
+                                <td class="text-center"><a class="btn btn-warning bi bi-pencil-square" href="@Url.Action("Form", "Materia", new { IdMateria = materia.IdMateria })"></a></td>
+                                <td class="visually-hidden">@materia.IdMateria</td>
+                                <td>@materia.Nombre</td>
+                                <td>@materia.Costo</td>
+                                <td class="text-center"><a class="btn btn-danger bi bi-trash" href="@Url.Action("Delete", "Materia", new { IdMateria = materia.IdMateria})" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            }
+
+
+        </section>
+</div>
