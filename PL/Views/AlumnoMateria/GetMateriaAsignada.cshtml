@@ -6,10 +6,11 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h2>Materias Asiganadas</h2>
-    </div>
+
+        <h2>Materias Asiganadas a:  @Model.Alumno.Nombre  @Model.Alumno.ApellidoPaterno @Model.Alumno.ApellidoMaterno </h2 >
 </div>
-<div class="container">
+</div>
+@*<div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="form-group hidden">
@@ -43,7 +44,7 @@
 
     <br />
 
-</div>
+</div>*@
 <br />
 <div class="form-group">
     <div class="row">
@@ -76,37 +77,41 @@
                         @alumnomateria.IdAlumnoMateria
                     </td>
                     <td class="text-center">
-                        <input type="checkbox" value="@alumnomateria.Materia.IdMateria" name="AlumnoMaterias">
+                        <input type="checkbox" value="@alumnomateria.Materia.IdMateria" name="AlumnosMaterias" >
                     </td>
-                    
+
                     <td class="text-left">
                         @alumnomateria.Materia.Nombre
                     </td>
                 </tr>
+
             }
+           
+
             @*@foreach (ML.AlumnoMateria Al in Model.AlumnosMaterias)
-            {
-                <tr>
+        {
+            <tr>
 
-                    <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash " href="@Url.Action("Delete", "AlumnoMateria", new { IdAlumnoMateria = Al.IdAlumnoMateria, IdAlumno = Al.Alumno.IdAlumno })" onclick="return confirm('¿Estas seguro que deseas eliminar este registro?');"></a></td>
+                <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash " href="@Url.Action("Delete", "AlumnoMateria", new { IdAlumnoMateria = Al.IdAlumnoMateria, IdAlumno = Al.Alumno.IdAlumno })" onclick="return confirm('¿Estas seguro que deseas eliminar este registro?');"></a></td>
 
-                    <td class="text-center hidden">
-                        @Al.IdAlumnoMateria
-                    </td>
-                    <td class="text-center">
-                        <input type="checkbox" value="@alumnomateria.Materia.IdMateria" name="AlumnoMaterias">
-                    </td>
-                    <td class="text-left hidden">
-                        @Al.Materia.IdMateria
-                    </td>
-                    <td class="text-left">
-                        @Al.Materia.Nombre
-                    </td>
-                </tr>
-            }*@
+                <td class="text-center hidden">
+                    @Al.IdAlumnoMateria
+                </td>
+                <td class="text-center">
+                    <input type="checkbox" value="@alumnomateria.Materia.IdMateria" name="AlumnoMaterias">
+                </td>
+                <td class="text-left hidden">
+                    @Al.Materia.IdMateria
+                </td>
+                <td class="text-left">
+                    @Al.Materia.Nombre
+                </td>
+            </tr>
+        }*@
         </table>
         <div class="form-group col-md-12">
             <div class="text-right">
+                <input type="submit" value="Guardar" class="btn btn-success" />
                 <input class="btn btn-success" type="submit" value="Actualizar" />
                 <a class="btn btn-danger" href="@Url.Action("GetMateriaAsignada", "AlumnoMateria", new { IdAlumno = Model.Alumno.IdAlumno })"> Regresar</a>
             </div>
