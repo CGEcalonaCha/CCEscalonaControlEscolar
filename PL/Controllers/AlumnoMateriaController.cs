@@ -59,7 +59,7 @@ namespace PL.Controllers
         [HttpGet]
         public ActionResult GetMateriaSinAsignar(int IdAlumno)
         {
-            ML.Result result = BL.AlumnoMateria.GetMateriaNoAsiganda(IdAlumno);
+            ML.Result result = BL.AlumnoMateria.GetMateriaSinAsignar(IdAlumno);
             ML.AlumnoMateria alumnomateria = new ML.AlumnoMateria();
 
             ML.Result resultalumno = BL.Alumno.GetById(IdAlumno);
@@ -70,7 +70,6 @@ namespace PL.Controllers
             return View(alumnomateria);
         }
         [HttpPost]
-
         public ActionResult GetMateriaSinAsignar(ML.AlumnoMateria alumnomateria)
         {
             ML.Result result = new ML.Result();

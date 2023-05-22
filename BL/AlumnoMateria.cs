@@ -82,7 +82,7 @@ namespace BL
             }
             return result;
         }
-        public static ML.Result GetMateriaNoAsiganda(int IdAlumno)
+        public static ML.Result GetMateriaSinAsignar(int IdAlumno)
         {
             ML.Result result = new ML.Result();
             try

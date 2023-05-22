@@ -7,44 +7,44 @@
 <div class="row">
     <div class="col-md-12">
 
-        <h2>Materias Asiganadas a:  @Model.Alumno.Nombre  @Model.Alumno.ApellidoPaterno @Model.Alumno.ApellidoMaterno </h2 >
-</div>
+        <h2>Materias Asiganadas a:  @Model.Alumno.Nombre  @Model.Alumno.ApellidoPaterno @Model.Alumno.ApellidoMaterno </h2>
+    </div>
 </div>
 @*<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group hidden">
-                @Html.LabelFor(model => model.Alumno.IdAlumno, new { @class = "control-label col-md-2 hidden" })
-                <div class="col-md-3">
-                    @Html.TextBoxFor(model => model.Alumno.IdAlumno, new { @class = "form-control hidden", @readonly = true })
-                    @Html.ValidationMessageFor(model => model.Alumno.IdAlumno)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group hidden">
+                    @Html.LabelFor(model => model.Alumno.IdAlumno, new { @class = "control-label col-md-2 hidden" })
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(model => model.Alumno.IdAlumno, new { @class = "form-control hidden", @readonly = true })
+                        @Html.ValidationMessageFor(model => model.Alumno.IdAlumno)
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
+                <div class="form-group">
+                    <div class="col-md-2">
+                        @Html.LabelFor(model => model.Alumno.Nombre, new { @class = "control-label", @readonly = true })
+                        @Html.TextBoxFor(model => model.Alumno.Nombre, new { @class = "form-control", @readonly = true })
+                        @Html.ValidationMessageFor(model => model.Alumno.Nombre)
+                    </div>
+                </div>
+
                 <div class="col-md-2">
-                    @Html.LabelFor(model => model.Alumno.Nombre, new { @class = "control-label", @readonly = true })
-                    @Html.TextBoxFor(model => model.Alumno.Nombre, new { @class = "form-control", @readonly = true })
-                    @Html.ValidationMessageFor(model => model.Alumno.Nombre)
+                    @Html.LabelFor(model => model.Alumno.ApellidoPaterno, "Apellido Paterno", new { @class = "control-label", @readonly = true })
+                    @Html.TextBoxFor(model => model.Alumno.ApellidoPaterno, new { @class = "form-control", @readonly = true })
+                    @Html.ValidationMessageFor(model => model.Alumno.ApellidoPaterno)
+                </div>
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Alumno.ApellidoMaterno, "Apellido Materno", new { @class = "control-label", @readonly = true })
+                    @Html.TextBoxFor(model => model.Alumno.ApellidoMaterno, new { @class = "form-control", @readonly = true })
+                    @Html.ValidationMessageFor(model => model.Alumno.ApellidoMaterno)
                 </div>
             </div>
 
-            <div class="col-md-2">
-                @Html.LabelFor(model => model.Alumno.ApellidoPaterno, "Apellido Paterno", new { @class = "control-label", @readonly = true })
-                @Html.TextBoxFor(model => model.Alumno.ApellidoPaterno, new { @class = "form-control", @readonly = true })
-                @Html.ValidationMessageFor(model => model.Alumno.ApellidoPaterno)
-            </div>
-            <div class="col-md-2">
-                @Html.LabelFor(model => model.Alumno.ApellidoMaterno, "Apellido Materno", new { @class = "control-label", @readonly = true })
-                @Html.TextBoxFor(model => model.Alumno.ApellidoMaterno, new { @class = "form-control", @readonly = true })
-                @Html.ValidationMessageFor(model => model.Alumno.ApellidoMaterno)
-            </div>
         </div>
-        
-    </div>
 
-    <br />
+        <br />
 
-</div>*@
+    </div>*@
 <br />
 <div class="form-group">
     <div class="row">
@@ -76,47 +76,41 @@
                     <td class="text-center hidden">
                         @alumnomateria.IdAlumnoMateria
                     </td>
-                    <td class="text-center">
-                        <input type="checkbox" value="@alumnomateria.Materia.IdMateria" name="AlumnosMaterias" >
+                    <td class="text-center hidden">
+                        @alumnomateria.IdAlumnoMateria
                     </td>
-
+                    <td class="text-center">
+                        <input type="checkbox" value="@alumnomateria.Materia.IdMateria" name="AlumnosMaterias">
+                    </td>
                     <td class="text-left">
                         @alumnomateria.Materia.Nombre
                     </td>
                 </tr>
 
             }
-           
 
-            @*@foreach (ML.AlumnoMateria Al in Model.AlumnosMaterias)
-        {
-            <tr>
-
-                <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash " href="@Url.Action("Delete", "AlumnoMateria", new { IdAlumnoMateria = Al.IdAlumnoMateria, IdAlumno = Al.Alumno.IdAlumno })" onclick="return confirm('¿Estas seguro que deseas eliminar este registro?');"></a></td>
-
-                <td class="text-center hidden">
-                    @Al.IdAlumnoMateria
-                </td>
-                <td class="text-center">
-                    <input type="checkbox" value="@alumnomateria.Materia.IdMateria" name="AlumnoMaterias">
-                </td>
-                <td class="text-left hidden">
-                    @Al.Materia.IdMateria
-                </td>
-                <td class="text-left">
-                    @Al.Materia.Nombre
-                </td>
-            </tr>
-        }*@
         </table>
         <div class="form-group col-md-12">
             <div class="text-right">
-                <input type="submit" value="Guardar" class="btn btn-success" />
-                <input class="btn btn-success" type="submit" value="Actualizar" />
+
+                <input class="btn btn-success" id="Eliminar" type="submit" value="Actualizar" />SS
                 <a class="btn btn-danger" href="@Url.Action("GetMateriaAsignada", "AlumnoMateria", new { IdAlumno = Model.Alumno.IdAlumno })"> Regresar</a>
             </div>
         </div>
     </div>
 </div>
 
-
+<script type="text/javascript">
+    $(document).on('click', '#AlumnosMaterias', function () {
+        $(".emp_checkbox").prop("checked", this.checked);
+        $("#select_count").html($("input.emp_checkbox:checked").length + " Selected");
+    });
+    $(document).on('click', '.emp_checkbox', function () {
+        if ($('.emp_checkbox:checked').length == $('.emp_checkbox').length) {
+            $('#AlumnosMaterias').prop('checked', true);
+        } else {
+            $('#AlumnosMaterias').prop('checked', false);
+        }
+        $("#select_count").html($("input.emp_checkbox:checked").length + " Selected");
+    });
+</script>

@@ -6,8 +6,8 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h2>Materias Sin Asiganadas</h2>
-        <h2>Materias Asiganadas a: @Model.Alumno.Nombre  @Model.Alumno.ApellidoPaterno @Model.Alumno.ApellidoMaterno </h2>
+
+        <h2>Materias Asiganadas Sin a: @Model.Alumno.Nombre  @Model.Alumno.ApellidoPaterno @Model.Alumno.ApellidoMaterno </h2>
     </div>
 </div>
 
@@ -42,13 +42,10 @@
                         {
                             <tr>
                                 <td class="text-center hidden">
-                                    @alumnomateria.IdAlumnoMateria
-                                </td>
-                                <td class="text-center hidden">
                                     @alumnomateria.Materia.IdMateria
                                 </td>
                                 <td class="text-center">
-                                    <input id="checkbox_@alumnomateria.Materia.IdMateria" type="checkbox" value="@alumnomateria.Materia.IdMateria" name="AlumnoMaterias" onclick="CalcularTotal(@alumnomateria.Materia.Costo, @alumnomateria.Materia.IdMateria)">
+                                    <input id="checkbox_@alumnomateria.Materia.IdMateria" type="checkbox" value="@alumnomateria.Materia.IdMateria" name="AlumnosMaterias" onclick="CalcularTotal(@alumnomateria.Materia.Costo, @alumnomateria.Materia.IdMateria)">
                                 </td>
                                 <td class="text-left">
                                     @alumnomateria.Materia.Nombre
